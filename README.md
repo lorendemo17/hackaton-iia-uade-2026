@@ -146,6 +146,51 @@ El sistema no detecta indicios suficientes para considerar al jugador sospechoso
 
 Conclusión: Estas pruebas permiten comprobar cómo responde el perceptrón ante dos perfiles diferentes. También sirven para verificar que las variables se procesen correctamente y que el modelo pueda clasificar casos nuevos sin conocer previamente su resultado real.
 
-No completar esta tabla con calificaciones o devoluciones inventadas. Cada corrida debe corresponder a una evaluación real.
+Corridas contra el evaluador de Telegram
+
+Corrida 2: Evaluación del proyecto M20
+
+Nota obtenida: 8,5/10
+
+Estado: Habilitado para la mesa.
+
+**Resultados por criterio:**
+
+| Criterio | Puntaje |
+|---|---|
+| A. Formulación y PEAS | 2/2 |
+| B. Sistema | 1/1,5 |
+| C. Medición | 3/3 |
+| D. Error más caro | 0,5/1 |
+| E. Comparación | 1/1 |
+| F. Riesgo | 0,5/0,5 |
+| G. Bitácora | 0,5/1 |
+
+Observaciones del evaluador:
+
+1. Los pesos y el sesgo aparecen como aproximados en el README, pero el cuaderno de Colab no los imprime.
+2. El caso B presenta valores diferentes en distintas partes del documento.
+3. No se explica suficientemente qué modificación se realizó en el clasificador para reducir los falsos positivos.
+4. La bitácora menciona ChatGPT, pero no explica qué tareas se realizaron con Claude.
+5. No estaban registradas las evaluaciones anteriores del bot.
+
+Pregunta principal del evaluador:
+
+¿Qué exactitud y qué sensibilidad obtiene un sistema que siempre responde NO? ¿Qué implica eso para interpretar el 100 % del perceptrón?
+
+Respuesta:
+
+Un sistema que siempre responde NO obtiene una exactitud del 83,33 % (5 de 6 casos), pero una sensibilidad del 0 %, porque no detecta al único tramposo del conjunto de prueba.
+
+El perceptrón obtiene un 100 % de exactitud y sensibilidad sobre estos seis casos. Sin embargo, esto no garantiza un rendimiento perfecto en situaciones reales, debido al tamaño reducido del conjunto y a la presencia de un solo caso positivo.
+
+Correcciones pendientes:
+
+- Incorporar la impresión de los pesos y el sesgo en Colab.
+- Unificar los valores utilizados para el caso B.
+- Explicar cómo se aborda el costo de los falsos positivos y distinguir las modificaciones del clasificador de la revisión manual posterior.
+- Completar el registro de las tareas realizadas con Claude.
+- Incorporar las corridas reales del evaluador a la bitácora.
+
 Defensa breve
 Nuestro sistema analiza tres estadísticas de una cuenta: precisión a la cabeza, tiempo de reacción y horas acumuladas. Entrenamos un perceptrón con 14 casos y lo probamos con otros seis. Aplica pesos y sesgo sobre entradas estandarizadas y clasifica SÍ o NO. En estos datos sintéticos acertó los seis casos de prueba; eso no garantiza que funcione igual en un videojuego real. Frente a un sistema que siempre responde NO, que logra 83,33 % de exactitud sin detectar al tramposo, nuestro modelo detectó el único positivo. Si predice SÍ, solicitamos revisión manual y no una sanción automática.
